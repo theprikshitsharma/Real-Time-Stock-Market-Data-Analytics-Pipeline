@@ -16,7 +16,7 @@ This project builds a real-time stock market data analytics pipeline using AWS, 
 
 ### Prerequisites: 
 1. Install Python (if not already installed): Open a code editor like VSCode and ensure you have Python 3.8+ installed by running the below command in the terminal.
-2. Install Required Python Libraries (pip3 install -r [requirements.txt](https://github.com/yeshwanthlm/Stock-Market-Real-Time-Data-Analytics-Pipeline-on-AWS/blob/main/Step1/requirements.txt))
+2. Install Required Python Libraries (pip3 install -r [requirements.txt](https://github.com/theprikshitsharma/Real-Time-Stock-Market-Data-Analytics-Pipeline/blob/main/Step1/requirements.txt))
 3. Configure AWS Credentials (if not done already):
 * Install AWS CLI (if not installed):
 * Download from [AWS CLI](https://aws.amazon.com/cli/) and install it.
@@ -38,7 +38,7 @@ AWSLambdaBasicExecutionRole
 AmazonS3FullAccess
 AmazonSNSFullAccess
 ```
-5. Clone [this](https://github.com/yeshwanthlm/Stock-Market-Real-Time-Data-Analytics-Pipeline-on-AWS/tree/main) repository on your local machine:
+5. Clone [this](https://github.com/theprikshitsharma/Real-Time-Stock-Market-Data-Analytics-Pipeline) repository on your local machine:
 ```sh
 git clone https://github.com/yeshwanthlm/Stock-Market-Real-Time-Data-Analytics-Pipeline-on-AWS.git
 ```
