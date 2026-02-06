@@ -11,6 +11,15 @@ This project builds a real-time stock market data analytics pipeline using AWS, 
 5. Querying historical data using Amazon Athena.
 6. Sending real-time stock trend alerts using AWS Lambda & Amazon SNS (Email/SMS).
 
+### What I Learned:
+1. Designing event-driven systems using AWS managed services
+2. Building real-time ingestion pipelines with Amazon Kinesis
+3. Implementing reactive processing using DynamoDB Streams
+4. Separating operational and analytical data workloads
+5. Managing schemas manually using AWS Glue Data Catalog
+6. Running serverless analytics using Amazon Athena
+7. Applying IAM best practices for secure cloud systems
+
 ### Project Architecture:
 <img width="1538" height="750" alt="image" src="https://github.com/user-attachments/assets/ec477d89-a2ee-4bab-8a5e-602d2cd81de4" />
 
@@ -107,21 +116,18 @@ requirements.txt
 
 This step sets up the real-time ingestion backbone that receives stock events from the EC2-hosted producer and makes them available to downstream consumers (Lambda).
 
-1. Create the Kinesis Data Stream
-
 Navigate to:
 AWS Console → Amazon Kinesis → Data Streams → Create data stream
 
 Basic settings:
-
+```sh
 Data stream name:
     stock-market-stream
-
 Capacity mode:
     On-demand
-
 Retention period:
     24 hours (default)
+```
 
 Click Create data stream. The stream will become ACTIVE in a few seconds.
 
@@ -135,9 +141,12 @@ This step sets up real-time processing of stock events flowing through Kinesis a
     Write to DynamoDB
 
 Go to IAM → Roles → Create role
-
-Trusted entity: AWS service
-Use case: Lambda
+```sh 
+Trusted entity: 
+    AWS service
+Use case:
+    Lambda
+```
 
 Attach policies:
 ```sh
