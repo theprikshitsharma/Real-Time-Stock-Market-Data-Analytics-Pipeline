@@ -1,4 +1,4 @@
-# Stock Market Real-Time Data Analytics Pipeline on AWS
+# Stock Market Real Time Data Analytics Pipeline on AWS
 
 ### Overview of Project ☁️
 This project builds a real-time stock market data analytics pipeline using AWS, leveraging event-driven architecture and serverless technologies. The architecture ingests, processes, stores, and analyzes stock market data in real-time while minimizing costs. .
@@ -10,6 +10,17 @@ This project builds a real-time stock market data analytics pipeline using AWS, 
 4. Storing raw stock data in Amazon S3 for long-term analytics.
 5. Querying historical data using Amazon Athena.
 6. Sending real-time stock trend alerts using AWS Lambda & Amazon SNS (Email/SMS).
+
+### What I Learned:
+1. Designing event-driven systems using AWS managed services
+2. Building real-time ingestion pipelines with Amazon Kinesis
+3. Implementing reactive processing using DynamoDB Streams
+4. Separating operational and analytical data workloads
+5. Managing schemas manually using AWS Glue Data Catalog
+6. Running serverless analytics using Amazon Athena
+7. Applying IAM best practices for secure cloud systems
+
+### [Project Walkthrough & Live Demo](https://www.youtube.com/watch?v=9U20mFqFRDA)
 
 ### Project Architecture:
 <img width="1538" height="750" alt="image" src="https://github.com/user-attachments/assets/ec477d89-a2ee-4bab-8a5e-602d2cd81de4" />
@@ -37,7 +48,8 @@ Name the role: ```ec2-kinesis-producer-role```
 
 Recommended configuration:
 
-```sh AMI: Amazon Linux 2023
+```sh
+AMI: Amazon Linux 2023
 Instance type: t3.micro
 IAM role: ec2-kinesis-producer-role
 Security group:
@@ -51,7 +63,8 @@ Launch the instance and connect via SSH:
 
 3. Install Docker on EC2
 
-```sh sudo dnf install docker -y
+```sh
+sudo dnf install docker -y
 sudo systemctl start docker
 sudo systemctl enable docker
 ```
@@ -82,7 +95,8 @@ cd kinesis-producer
 
 The directory should contain:
 
-```sh stream_stock_data.py
+```sh
+stream_stock_data.py
 Dockerfile
 requirements.txt
 ```
@@ -93,7 +107,8 @@ requirements.txt
 
 6. Run the Container
 
-```sh docker run -d \
+```sh
+    docker run -d \
   --name kinesis-producer \
   --restart unless-stopped \
   kinesis-producer
@@ -103,21 +118,19 @@ requirements.txt
 
 This step sets up the real-time ingestion backbone that receives stock events from the EC2-hosted producer and makes them available to downstream consumers (Lambda).
 
-1. Create the Kinesis Data Stream
-
 Navigate to:
 AWS Console → Amazon Kinesis → Data Streams → Create data stream
 
 Basic settings:
 
+```sh
 Data stream name:
     stock-market-stream
-
 Capacity mode:
     On-demand
-
 Retention period:
     24 hours (default)
+```
 
 Click Create data stream. The stream will become ACTIVE in a few seconds.
 
@@ -132,8 +145,12 @@ This step sets up real-time processing of stock events flowing through Kinesis a
 
 Go to IAM → Roles → Create role
 
-Trusted entity: AWS service
-Use case: Lambda
+```sh 
+Trusted entity: 
+    AWS service
+Use case:
+    Lambda
+```
 
 Attach policies:
 ```sh
