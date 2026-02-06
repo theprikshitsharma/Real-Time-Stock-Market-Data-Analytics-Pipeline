@@ -20,7 +20,7 @@ This project builds a real-time stock market data analytics pipeline using AWS, 
 6. Running serverless analytics using Amazon Athena
 7. Applying IAM best practices for secure cloud systems
 
-### [Project Walkthrough & Live Demo](https://youtube.com/your-video-link)
+### [Project Walkthrough & Live Demo](https://www.youtube.com/watch?v=9U20mFqFRDA)
 
 ### Project Architecture:
 <img width="1538" height="750" alt="image" src="https://github.com/user-attachments/assets/ec477d89-a2ee-4bab-8a5e-602d2cd81de4" />
