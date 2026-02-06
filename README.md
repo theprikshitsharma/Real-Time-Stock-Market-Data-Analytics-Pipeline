@@ -37,7 +37,8 @@ Name the role: ```ec2-kinesis-producer-role```
 
 Recommended configuration:
 
-```sh AMI: Amazon Linux 2023
+```sh
+AMI: Amazon Linux 2023
 Instance type: t3.micro
 IAM role: ec2-kinesis-producer-role
 Security group:
@@ -51,14 +52,16 @@ Launch the instance and connect via SSH:
 
 3. Install Docker on EC2
 
-```sh sudo dnf install docker -y
+```sh
+sudo dnf install docker -y
 sudo systemctl start docker
 sudo systemctl enable docker
 ```
 
 Add the EC2 user to the Docker group:
 
-```sh sudo usermod -aG docker ec2-user
+```sh
+sudo usermod -aG docker ec2-user
 exit
 ```
 
@@ -81,7 +84,8 @@ cd kinesis-producer
 
 The directory should contain:
 
-```sh stream_stock_data.py
+```sh
+stream_stock_data.py
 Dockerfile
 requirements.txt
 ```
@@ -92,7 +96,8 @@ requirements.txt
 
 6. Run the Container
 
-```sh docker run -d \
+```sh
+    docker run -d \
   --name kinesis-producer \
   --restart unless-stopped \
   kinesis-producer
@@ -481,6 +486,4 @@ WHERE ABS(((price - previous_close) / previous_close) * 100) > 5;
 
 Athena can immediately query this table and would automatically write query results to:
     ```s3://athena-query-results-<unique-id>/```
-
-```
 
